@@ -1,0 +1,24 @@
+<media raw='/Users/username/originals' target="/Users/username/Exports/media" watermark='/Users/username/originals/watermark.png'>
+    <galleries>
+        <gallery name="gallery-name">
+            <image src="image/file" />
+        </gallery>
+        <gallery name="gallery-name" folder="image/folder" />
+    </galleries>
+
+    <gifs>
+        <file src="video/file.mp4" target="export/name" scale="64" crop_x="0" crop_y="0" crop_w="128" crop_h="128" start_time="0" end_time="2.5"/>
+    </gifs>
+
+    <images>
+        <file src="image/file.png" target="export/name"/>
+    </images>
+
+    <videos>
+        <file src="video/file.mp4" target="export/name"/>
+    </videos>
+
+    <music>
+        <file src="music/file.wav" target="export/name"/>
+    </music>
+</media>
