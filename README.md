@@ -8,6 +8,8 @@ Convert raw / original media to web ready media
 * Read media.xml and processes all files (website)
 * wav to mp3
 * png to jpg
+* svg files to wallpapers
+* svg files to icons
 
 # Setup
 ### ffmpeg installation
@@ -18,6 +20,8 @@ open .
 # TODO
 - [X] Only process files that don't exist in output folder
 - [X] Delete files that are not listed in data in target folders
+- [ ] Support for specifying svg icon sizes
+- [ ] Wallpaper / Icon tag support in media.xml files ( specify svg to convert to a wallpaper or icon at destination )
 - [ ] Watermark enable/disable override per category or item
 - [ ] Target width/height in xml, for thumbnails too
 - [ ] svg to jpg or png

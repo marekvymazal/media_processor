@@ -13,6 +13,7 @@ import base64
 from . import settings
 from . import data
 from . import audio
+from . import svg
 
 
 def main():
@@ -47,12 +48,16 @@ def main():
     -i ext -o ext //todo Convert only files of input extension to files of output extension
     ex: -i jpg -o png
     ex: -i gif -o mp4
+
+    svg:
+        --svg-wallpaper    Export wallpapers
+        --svg-icon         Export icons
     """
 
     data_file = None
 
     try:
-        opts, args = getopt.getopt(argv,"h",["help","data=","delete","new","crawl"])
+        opts, args = getopt.getopt(argv,"h",["help","data=","delete","new","crawl","svg-wallpaper","svg-icon"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -62,7 +67,7 @@ def main():
 
         print(opt, arg)
 
-        if opt in ('-h', '--help'):
+        if opt in ['-h', '--help']:
             print (help_str)
             sys.exit()
             return
@@ -79,8 +84,18 @@ def main():
         if opt in ['--new']:
             settings.new_only = True
 
-
     current_directory = os.getcwd()
+
+
+    for opt, arg in opts:
+        if opt in ['--svg-wallpaper']:
+            svg.export_wallpapers( current_directory, verify=True )
+            return
+
+    for opt, arg in opts:
+        if opt in ['--svg-icon']:
+            svg.export_icons( current_directory, size=256, verify=True )
+            return
 
     if data_file != None:
         if os.path.isfile(data_file):
@@ -91,6 +106,8 @@ def main():
 
     # process audio
     audio.process_dir( current_directory, verify=True )
+
+    #svg.process_dir( current_diretory, verify=True)
 
 if __name__ == "__main__":
     main()
