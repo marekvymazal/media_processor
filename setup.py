@@ -10,7 +10,7 @@ setup(
    long_description=long_description,
    author='Marek Vymazal',
    packages=['media_processor'],  #same as name
-   install_requires=['Pillow', 'fpdf', 'markdown'], #external packages as dependencies
+   install_requires=['Pillow', 'fpdf', 'bs4', 'lxml','markdown'], #external packages as dependencies
    entry_points={
         'console_scripts': [
                 'media_processor = media_processor.__main__:main'
