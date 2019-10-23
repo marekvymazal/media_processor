@@ -167,6 +167,17 @@ def process( data_file ):
             except:
                 raise ValueError('No target specified for image')
 
+            # tag use watermark override
+            cur_watermark = None
+            try:
+                if tag['use_watermark'].lower() == 'true':
+                    cur_watermark = settings.watermark
+                elif tag['use_watermark'].lower() == 'false':
+                    cur_watermark = None
+
+            except:
+                pass
+
             image_rel, filename = os.path.split( target )
 
             # process folder
@@ -181,7 +192,7 @@ def process( data_file ):
 
             target_folders['images']['files'].append(out_file)
 
-            image.process( in_file, out_file, ext='jpg', quality=95, scale=scale)
+            image.process( in_file, out_file, ext='jpg', quality=95, scale=scale, watermark=cur_watermark)
 
             print( filename )
             print('  ' + in_file)
